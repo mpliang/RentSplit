@@ -1,0 +1,19 @@
+<ion-view view-title="Dashboard" hide-back-button="true">
+  <ion-content>
+
+    <ion-list>
+      <ion-item class="item-remove-animate" ng-repeat="bill in bills" type="item-text-wrap" ng-if="!bill.paid">
+        <h2>{{bill.type}}</h2>
+        <p>{{bill.amount | currency : symbol : fractionSize}}</p>
+        <ion-option-button class="button-assertive" ng-click="paid(bill)">
+          Paid
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+    <hr>
+
+    
+
+  </ion-content>
+</ion-view>
