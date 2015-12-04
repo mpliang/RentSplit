@@ -104,6 +104,32 @@ app.run(function ($ionicPlatform, $rootScope, $timeout) {
         }
       }
     })
+    .state('app.manage', {
+      url: '/manage',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/manage.html'
+        }
+      }
+    })
+    .state('app.manage-bills', {
+      url: '/manage/bills',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/manage-bills.html',
+          controller: 'BillCtrl'
+        }
+      }
+    })
+    .state('app.manage-roommates', {
+      url: '/manage/roommates',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/manage-roommates.html',
+          controller: 'RoommateCtrl'
+        }
+      }
+    })
     .state('app.settings', {
       url: '/settings',
       views: {
@@ -123,5 +149,5 @@ app.run(function ($ionicPlatform, $rootScope, $timeout) {
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/app/home');
 });

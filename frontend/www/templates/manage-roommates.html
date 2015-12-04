@@ -1,0 +1,17 @@
+<ion-view view-title="Dashboard">
+  <ion-content>
+
+    <ion-list>
+      <ion-item class="item-remove-animate" ng-repeat="roommate in roommates" type="item-text-wrap" ng-if="!bill.paid">
+        <h2>{{roommate.name}}</h2>
+        <ion-option-button class="button-assertive" ng-click="paid(bill)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+    <button class="button button-block button-balanced" type="submit">Add Roommate</button>
+
+
+  </ion-content>
+</ion-view>

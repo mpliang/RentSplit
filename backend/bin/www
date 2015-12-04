@@ -5,8 +5,12 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('backend:server');
+var debug = require('debug')('heroku:server');
 var http = require('http');
+
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/rentSplit');
+
 
 /**
  * Get port from environment and store in Express.

@@ -4,64 +4,64 @@
     <form ng-submit="newBill(bill)" role="form">
       <div class="list list-inset">
 
-  <label class="item item-input item-select">
-    <div class="input-label">
-      Type
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Type
+          </div>
+          <select>
+            <option>Rent</option>
+            <option>Internet/Cable</option>
+            <option>Water</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Amount</span>
+        <input ng-model="bill.amount" type="tel">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Due</span>
+        <input ng-model="bill.due" type="date">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Roommates:</span>
+        <!-- ng repeat for all roommates -->
+        <ul class="list">
+
+          <li class="item item-checkbox">
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+            Roomate 1
+          </li>
+          <li class="item item-checkbox">
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+            Roomate 2
+          </li>
+          <li class="item item-checkbox">
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+            Roomate 3
+          </li>
+          <li class="item item-checkbox">
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+            Roomate 4
+          </li>
+
+        </ul>
+      </label>
+      <label class="item item-input">
+        <textarea class="form-control" name="body" ng-model="bill.body" placeholder="Notes" rows="4"></textarea>
+      </label>
+      <button class="button button-block button-balanced" type="submit">Add</button>
     </div>
-    <select>
-      <option>Rent</option>
-      <option>Internet/Cable</option>
-      <option>Water</option>
-      <option>Other</option>
-    </select>
-  </label>
-
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Amount</span>
-          <input ng-model="bill.amount" type="tel">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Due</span>
-          <input ng-model="bill.due" type="date">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Roommates:</span>
-          <!-- ng repeat for all roommates -->
-          <ul class="list">
-
-            <li class="item item-checkbox">
-              <label class="checkbox">
-                <input type="checkbox">
-              </label>
-              Roomate 1
-            </li>
-            <li class="item item-checkbox">
-              <label class="checkbox">
-                <input type="checkbox">
-              </label>
-              Roomate 2
-            </li>
-            <li class="item item-checkbox">
-              <label class="checkbox">
-                <input type="checkbox">
-              </label>
-              Roomate 3
-            </li>
-            <li class="item item-checkbox">
-              <label class="checkbox">
-                <input type="checkbox">
-              </label>
-              Roomate 4
-            </li>
-
-          </ul>
-        </label>
-        <label class="item item-input">
-          <textarea class="form-control" name="body" ng-model="bill.body" placeholder="Notes" rows="4"></textarea>
-        </label>
-        <button class="button button-block button-balanced" type="submit">Add</button>
-      </div>
-    </form>
-  </ion-content>
+  </form>
+</ion-content>
 </ion-view>

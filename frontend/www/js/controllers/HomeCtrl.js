@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', function($scope, $stateParams , Profiles) {
+app.controller('HomeCtrl', function($scope) {
 	$scope.bills = [
     {
       type: 'rent',
