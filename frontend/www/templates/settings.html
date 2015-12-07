@@ -2,7 +2,7 @@
   <ion-content>
 
     <div class="profile" style="text-align:center;margin:15px;">
-      <img src="http://placehold.it/150x150" style="border-radius:50%;background-repeat:no-repeat;background-size:cover;"/>
+      <img src="http://graph.facebook.com/{{user.id}}/picture?width=150&height=150" style="border-radius:50%;background-repeat:no-repeat;background-size:cover;"/>
     </div>
 
     <div class="list list-inset">
@@ -16,13 +16,13 @@
       </label>
       <label class="item item-input">
         <span class="input-label">Email</span>
-        <input type="email">
+        <input type="email" value="{{user.email}}">
       </label>
       <label class="item item-input">
         <span class="input-label">Phone</span>
         <input type="text">
       </label>
-      <button class="button button-block button-assertive" ng-click="logout()">
+      <button class="button button-block button-assertive" ng-click="fbLogout()">
         Sign Out
       </button>
 

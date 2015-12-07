@@ -1,11 +1,12 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var logout = require('express-passport-logout');
 var User = require('../models/user');
 var Bill = require('../models/bill');
-//var auth = require('../config/auth.js');
-// var atob = require('atob');
+var jwt = require('express-jwt');
+var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
 
 
@@ -17,7 +18,6 @@ router.get('/', function(req, res, next) {
 
 
 ////////////////////////////Auth routes////////////////////////////
-
 
 router.post('/register', function(req, res, next) {
   if(!req.body.username || !req.body.password){
@@ -79,6 +79,13 @@ router.get('/user/:id', auth, (req, res) => {
 
 ////////////////////////////User routes////////////////////////////
 
+//get all users
+router.get('/users', function(req,res,next) {
+  User.find({}, function(err, data){
+    res.status(err ? 400 : 200).send(err || data);
+  })
+});
+
 //get user data
 router.get('/:id', function(req,res,next) {
   User.findById(req.params.id, function(err, user){
@@ -116,7 +123,8 @@ router.delete('/:id/:roommateId', function(req, res) {
 //add new bill
 router.post("/:id/bills", function(req, res) {
   User.findById(req.params.id, function(err, user) {
-    user.bills.push(req.body);
+    var bill = new Bill(req.body);
+    user.bills.push(bill);
     user.save();
     res.status(err ? 400 : 200).send(err || user);
   });

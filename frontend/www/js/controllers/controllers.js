@@ -1,7 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,  $location, $ionicPopup) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,  $location, $ionicPopup, ngFB) {
 
+
+  ngFB.api({
+    path: '/me',
+    params: {
+      fields: 'id,name,location'
+    }
+  }).then(
+    function (user) {
+      $scope.user = user;
+    },
+    function (error) {
+      console.log('Facebook error: ' + error.error_description);
+    });
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -39,15 +52,3 @@ angular.module('starter.controllers', [])
 	 };
   //--------------------------------------------
 })
-
-.controller('ProfilesCtrl', function($scope , Profiles) {
-    $scope.profiles = Profiles.all();
-})
-
-.controller('ProfileCtrl', function($scope, $stateParams , Profiles) {
-	$scope.profile = Profiles.get($stateParams.profileId);
-})
-
-.controller('DashCtrl', function($scope, $stateParams , Profiles) {
-	$scope.profiles = Profiles.all();
-});

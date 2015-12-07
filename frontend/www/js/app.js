@@ -5,8 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-app.run(function ($ionicPlatform, $rootScope, $timeout) {
+app.run(function ($ionicPlatform, $rootScope, $timeout, ngFB) {
   $ionicPlatform.ready(function () {
+    ngFB.init({
+      appId: '1041161439269755'
+    });
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -58,7 +61,8 @@ app.run(function ($ionicPlatform, $rootScope, $timeout) {
       url: '/login',
       views: {
         'menuContent': {
-          templateUrl: 'templates/tab-signin.html'
+          templateUrl: 'templates/tab-signin.html',
+          controller: 'SignInCtrl'
         }
       },
       authStatus: false
@@ -100,7 +104,17 @@ app.run(function ($ionicPlatform, $rootScope, $timeout) {
       url: '/pay',
       views: {
         'menuContent': {
-          templateUrl: 'templates/pay.html'
+          templateUrl: 'templates/pay.html',
+          controller: 'PayCtrl'
+        }
+      }
+    })
+    .state('app.pay-auth', {
+      url: '/pay?auth',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/pay.html',
+          controller: 'PayCtrl'
         }
       }
     })
@@ -135,6 +149,7 @@ app.run(function ($ionicPlatform, $rootScope, $timeout) {
       views: {
         'menuContent': {
           templateUrl: 'templates/settings.html',
+          controller: 'SettingsCtrl'
         }
       }
     })
@@ -144,10 +159,9 @@ app.run(function ($ionicPlatform, $rootScope, $timeout) {
     views: {
       'menuContent': {
         templateUrl: 'templates/profile-detail.html',
-        controller: 'ProfileCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/login');
 });

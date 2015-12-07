@@ -6,7 +6,8 @@ var billSchema = new Schema({
   type: {type: String, required: true},
   amount: {type: Number, required: true},
   Due: {type: Date, required: true},
-  roommates: [{mongoose.Schema.ObjectId, ref: 'User'}],
+  roommates: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
+  repeats: {type: String, default: 'monthly'},
   Notes: {type: String},
 });
 

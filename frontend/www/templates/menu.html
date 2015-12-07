@@ -20,15 +20,15 @@
     <ion-content >
       <div class="row">
         <div class="col col-33">
-          <img src="http://placehold.it/75x75" style="border-radius:50%;background-repeat:no-repeat;background-size:cover;" />
+          <img src="http://graph.facebook.com/{{user.id}}/picture?width=75&height=75" style="border-radius:50%;background-repeat:no-repeat;background-size:cover;" />
         </div>
         <div class="col col-66">
-          <p>Michael Liang</p>
-          <p>San Francisco, CA</p>
+          <p>{{user.name}}</p>
+          <p>{{user.location.name}}</p>
         </div>
       </div>
       <ion-list id="menuLinks">
-        <ion-item menu-close href="#/app/dashboard"> Dashboard </ion-item>
+        <ion-item menu-close href="#/app/home"> Dashboard </ion-item>
         <ion-item menu-close href="#/app/add"> Add new bill </ion-item>
         <ion-item menu-close href="#/app/pay"> Pay </ion-item>
         <ion-item menu-close href="#/app/manage"> Manage </ion-item>

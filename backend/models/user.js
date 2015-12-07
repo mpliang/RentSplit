@@ -8,7 +8,7 @@ var userSchema = mongoose.Schema({
   location: {type: String},
   email: {type: String, required: true},
   phone: {type: String, default: 'http://placehold.it/200x300?text=Profile+Picture', required: true},
-  roommates: [{mongoose.Schema.ObjectId, ref: 'User'}],
+  roommates: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
   bills: [{type: mongoose.Schema.ObjectId, ref: 'Bill'}],
   hash: String,
   salt: String,
@@ -34,7 +34,7 @@ userSchema.methods.generateJWT = function() {
     _id: this._id,
     username: this.username,
     exp: parseInt(exp.getTime() / 1000),
-  }, process.env.SECRET);
+  }, 'SECRET');
 };
 
 var User = mongoose.model('User', userSchema);
